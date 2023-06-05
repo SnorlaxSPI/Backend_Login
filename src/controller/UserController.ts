@@ -3,6 +3,11 @@ import { prisma } from "../utils/prisma";
 import { Request, Response } from 'express';
 
 class UserController {
+  async index(request:Request, response:Response) {
+    const users = await prisma.user.findMany();
+    return response.json({ users });
+  }
+  
   async store(request: Request, response: Response) {
     const { name, email, password } = request.body;
 
