@@ -21,7 +21,9 @@ class AuthController {
 
     const token = sign({ id: user.id }, "secret", { expiresIn: '1d' });
 
-    return response.json({ user, token });
+    const { id } = user;
+
+    return response.json({ user: { id, email }, token });
   }
 };
 
