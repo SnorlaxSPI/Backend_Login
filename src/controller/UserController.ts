@@ -15,7 +15,7 @@ class UserController {
     const userExists = await prisma.user.findUnique({ where: { email }});
 
     if (userExists) {
-      return response.json({ error: 'USer exists' });
+      return response.json({ error: 'User exists' });
     }
 
     const hash_password = await hash(password, 8);
